@@ -17,6 +17,12 @@ class Logger(object):
         The simulation class should use this method immediately to log the specific
         parameters of the simulation as the first line of the file.
         '''
+        self.pop_size = 
+        self.vacc_percentage = 
+        self.virus_name = 
+        self.mortality_rate = 
+        self.basic_repro_num = 
+
         # TODO: Finish this method. This line of metadata should be tab-delimited
         # it should create the text file that we will store all logs in.
         # TIP: Use 'w' mode when you open the file. For all other methods, use
