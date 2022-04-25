@@ -24,10 +24,20 @@ class Person(object):
         If random number is smaller, person dies from the disease.'''
         #random.mortality < self.virus.mortality_rate
         #self = not alive
+        #return False
+        if random.uniform(0, 1) < self.infection.mortality_rate:
+            print("This person did not survive")
+            self.is_alive = False
+            return False
+        else: 
+            print("This person is survied the virus and is now vaccinated")
+            self.is_vaccinated = True
+            self.infection = None
+            return True
         '''If Person survives, they become vaccinated and they have no infection.'''
         #self.is_alive = True if is_vaccinated, self.infection = None 
+            
         '''Return a boolean value indicating whether they survived the infection.'''
-        #return True
         
         # Only called if infection attribute is not None.
         # TODO:  Finish this method. Should return a Boolean
@@ -42,17 +52,6 @@ class Person(object):
             #self.is_vaccinated = True
             
         #return self.is_alive  
-
-        if self.infection:
-            if random.uniform(0,1) < self.infection.mortality_rate:
-                self.is_alive = False
-                return False
-            else:
-                self.is_alive = True
-                self.is_vaccinated = True 
-                self.infection = None
-                return True
-
 
 
 ''' These are simple tests to ensure that you are instantiating your Person class correctly. '''

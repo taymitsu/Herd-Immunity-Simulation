@@ -9,11 +9,18 @@ class Logger(object):
     def __init__(self, file_name):
         # TODO:  Finish this initialization method. The file_name passed should be the
         # full file name of the file that the logs will be written to.
-        self.file = None
         self.file_name = file_name
     
 
-    def write_metadata(self, sim):
+    def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate, repro_rate, initial_infected):
+
+        f = open(self.file_name, 'w')
+        f.write(f'********HERD IMMUNITY SIMULATION********')
+        f.write('\n')
+        f.write(f'Population Size: {pop_size}\n Initially Vaccinated: {vacc_percentage * 100}%\n Initially Infected: {initial_infected}\n Virus: {virus_name}\n Mortality Rate: {mortality_rate}\n Reproductive Rate: {repro_rate}\n')
+        f.write(f'Simulation loading...')
+        f.close() 
+
         '''
         The simulation class should use this method immediately to log the specific
         parameters of the simulation as the first line of the file.
@@ -42,19 +49,33 @@ class Logger(object):
         # represent all the possible edge cases. Use the values passed along with each person,
         # along with whether they are sick or vaccinated when they interact to determine
         # exactly what happened in the interaction and create a String, and write to your logfile.
-        pass
+        f = open(self.file_name, 'a')
+        if random_person_sick:
+            f.write(f'{person._id} did not infect {random_person._id} because they are already sick.\n')
+        elif random_person_vacc:
+            f.write(f'{person._id} did not infect {random_person._id} because they are vaccinated against the virus.\n')
+        else:
+            f.write(f'{person._id} infected {random_person._id}\n')
+        f.close
 
-    def log_infection_survival(self, person, did_die_from_infection):
+    def log_infection_survival(self, person, survived_infection):
         ''' The Simulation object uses this method to log the results of every
         call of a Person object's .resolve_infection() method.
 
         The format of the log should be:
             "{person.ID} died from infection\n" or "{person.ID} survived infection.\n"
         '''
+
         # TODO: Finish this method. If the person survives, did_die_from_infection
         # should be False.  Otherwise, did_die_from_infection should be True.
         # Append the results of the infection to the logfile
-        pass
+        f = open(self.file_name, 'a')
+
+        if survived_infection:
+            f.write(f'{person._id} survived! \n')
+        else: 
+            f.write(f'{person._id} died. \n')
+        f.close()
 
     def log_time_step(self, time_step_number):
         ''' STRETCH CHALLENGE DETAILS:
