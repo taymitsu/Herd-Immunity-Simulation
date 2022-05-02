@@ -1,10 +1,8 @@
-from virus import Virus
 import random, sys
 random.seed(42)
 from person import Person
 from logger import Logger
-
-
+from virus import Virus
 
 class Simulation(object):
     def __init__(self, pop_size, vacc_percentage, virus, initial_infected=1):
