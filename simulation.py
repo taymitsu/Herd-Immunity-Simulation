@@ -1,12 +1,13 @@
+from virus import Virus
 import random, sys
 random.seed(42)
 from person import Person
 from logger import Logger
-from virus import Virus
+
 
 
 class Simulation(object):
-    def __init__(self, pop_size, virus, vacc_percentage, initial_infected=1):
+    def __init__(self, pop_size, vacc_percentage, virus, initial_infected=1):
         self.logger = Logger('answers.txt')
         self.pop_size = pop_size # Int
         self.virus = virus # Virus object
@@ -16,7 +17,7 @@ class Simulation(object):
         self.total_infected = 0 # Int
         self.total_dead = 0 # Int
         self.population = [] # List of Person objects
-        self.file_name = f"{self.virus.name}_simulation_pop_{pop_size}_vp_{vacc_percentage}_infected_{initial_infected}.txt"
+        self.file_name = "{}_simulation_pop_{}_vp_{}_infected_{}.txt".format(self.virus.name, pop_size, vacc_percentage, initial_infected)
         self.newly_infected = []
         self.dead_population = [] # tip
         self.num_interactions = 0
@@ -62,7 +63,7 @@ class Simulation(object):
         return should_continue
 
     def run(self):
-        self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus.name, self.virus.mortality_rate, self.repro_rate, self.initial_infected)
+        self.logger.write_metadata(self.pop_size, self.vacc_percentage, self.virus.name, self.virus.mortality_rate, self.virus.repro_rate, self.initial_infected)
         time_step_counter = 0
 
         while self._simulation_should_continue():

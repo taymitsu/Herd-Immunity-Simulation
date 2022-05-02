@@ -1,0 +1,15 @@
+********HERD IMMUNITY SIMULATION********
+Population Size: 100000
+ Initially Vaccinated: 25.0%
+ Initially Infected: 10
+ Virus: Ebola
+ Mortality Rate: 0.7
+ Reproductive Rate: 0.9
+Simulation loading...
+~ Summary of Simulation ~ 
+Total living: 100000
+Total dead: 0
+Total of vaccinations: 0
+Total number of interactions: 0
+Number vaccinations after interacting: 0
+Number deaths after interacting: 0
