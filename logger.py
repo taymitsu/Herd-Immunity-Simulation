@@ -56,7 +56,7 @@ class Logger(object):
             f.write(f'{person._id} did not infect {random_person._id} because they are vaccinated against the virus.\n')
         else:
             f.write(f'{person._id} infected {random_person._id}\n')
-        f.close
+        f.close()
 
     def log_infection_survival(self, person, survived_infection):
         ''' The Simulation object uses this method to log the results of every
